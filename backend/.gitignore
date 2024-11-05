@@ -1,0 +1,38 @@
+# Python virtual environment
+.venv/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Rasa related files
+rasa_requests.log
+.rasa/
+
+# IDE specific files
+.idea/
+.vscode/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.cache/
+pytest_cache/
+coverage.xml
+
+# Miscellaneous
+*.swp
+*.bak
+*.tmp
+*.orig
+.DS_Store
+
+# Environment variables and credentials
+credentials.yml
+.env
+
+# Model files
+models/

@@ -1,0 +1,65 @@
+2024-11-05 18:49:16,089 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2024-11-05 18:49:16,089 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2024-11-05 18:49:16,089 - h5py._conv - DEBUG - Creating converter from 7 to 5
+2024-11-05 18:49:16,089 - h5py._conv - DEBUG - Creating converter from 5 to 7
+2024-11-05 18:49:16,419 - jax._src.path - DEBUG - etils.epath was not found. Using pathlib for file I/O.
+2024-11-05 18:49:17,381 - root - INFO - Starting Rasa server on http://0.0.0.0:5005
+2024-11-05 18:49:17,511 - rasa.core.processor - INFO - Loading model models/20241105-182955-ragged-interval.tar.gz...
+2024-11-05 18:49:17,979 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): huggingface.co:443
+2024-11-05 18:49:18,190 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/tokenizer_config.json HTTP/11" 200 0
+2024-11-05 18:49:18,379 - urllib3.connectionpool - DEBUG - https://huggingface.co:443 "HEAD /bert-base-cased/resolve/main/config.json HTTP/11" 200 0
+2024-11-05 18:49:37,841 - root - INFO - Rasa server is up and running.
+2024-11-05 18:49:37,843 - root - INFO - Enabling coroutine debugging. Loop id 104945693317840.
+2024-11-05 18:49:45,712 - rasa.core.processor - DEBUG - Starting a new session for conversation ID 'shreyas'.
+2024-11-05 18:49:46,183 - rasa.core.processor - DEBUG - Logged UserUtterance - tracker now has 4 events.
+2024-11-05 18:49:46,196 - rasa.core.processor - DEBUG - Predicted next action 'utter_greet' with confidence 1.00.
+2024-11-05 18:49:46,217 - rasa.core.processor - DEBUG - Predicted next action 'action_listen' with confidence 1.00.
+2024-11-05 18:50:18,041 - rasa.core.processor - DEBUG - Logged UserUtterance - tracker now has 9 events.
+2024-11-05 18:50:18,047 - rasa.core.processor - DEBUG - Predicted next action 'action_integration_info' with confidence 1.00.
+2024-11-05 18:50:18,348 - rasa.core.processor - DEBUG - Predicted next action 'action_listen' with confidence 1.00.
+2024-11-05 18:53:38,843 - rasa.core.processor - DEBUG - Logged UserUtterance - tracker now has 14 events.
+2024-11-05 18:53:38,850 - rasa.core.processor - DEBUG - Predicted next action 'action_integration_info' with confidence 1.00.
+2024-11-05 18:53:38,853 - rasa.core.actions.action - ERROR - Failed to run custom action 'action_integration_info'. Couldn't connect to the server at 'http://localhost:5055/webhook'. Is the server running? Error: Cannot connect to host localhost:5055 ssl:default [Connection refused]
+2024-11-05 18:53:38,853 - rasa.core.processor - ERROR - Encountered an exception while running action 'action_integration_info'.Bot will continue, but the actions events are lost. Please check the logs of your action server for more information.
+Traceback (most recent call last):
+  File "/home/alex/education/architecture-course/architecture-sprint-5/backend/.venv/lib/python3.10/site-packages/aiohttp/connector.py", line 1025, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs)
+  File "uvloop/loop.pyx", line 2043, in create_connection
+  File "uvloop/loop.pyx", line 2020, in uvloop.loop.Loop.create_connection
+ConnectionRefusedError: [Errno 111] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/alex/education/architecture-course/architecture-sprint-5/backend/.venv/lib/python3.10/site-packages/rasa/core/actions/action.py", line 780, in run
+    response: Any = await self.action_endpoint.request(
+  File "/home/alex/education/architecture-course/architecture-sprint-5/backend/.venv/lib/python3.10/site-packages/rasa/utils/endpoints.py", line 174, in request
+    async with session.request(
+  File "/home/alex/education/architecture-course/architecture-sprint-5/backend/.venv/lib/python3.10/site-packages/aiohttp/client.py", line 1197, in __aenter__
+    self._resp = await self._coro
+  File "/home/alex/education/architecture-course/architecture-sprint-5/backend/.venv/lib/python3.10/site-packages/aiohttp/client.py", line 581, in _request
+    conn = await self._connector.connect(
+  File "/home/alex/education/architecture-course/architecture-sprint-5/backend/.venv/lib/python3.10/site-packages/aiohttp/connector.py", line 544, in connect
+    proto = await self._create_connection(req, traces, timeout)
+  File "/home/alex/education/architecture-course/architecture-sprint-5/backend/.venv/lib/python3.10/site-packages/aiohttp/connector.py", line 944, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+  File "/home/alex/education/architecture-course/architecture-sprint-5/backend/.venv/lib/python3.10/site-packages/aiohttp/connector.py", line 1257, in _create_direct_connection
+    raise last_exc
+  File "/home/alex/education/architecture-course/architecture-sprint-5/backend/.venv/lib/python3.10/site-packages/aiohttp/connector.py", line 1226, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+  File "/home/alex/education/architecture-course/architecture-sprint-5/backend/.venv/lib/python3.10/site-packages/aiohttp/connector.py", line 1033, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host localhost:5055 ssl:default [Connection refused]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/alex/education/architecture-course/architecture-sprint-5/backend/.venv/lib/python3.10/site-packages/rasa/core/processor.py", line 982, in _run_action
+    events = await action.run(
+  File "/home/alex/education/architecture-course/architecture-sprint-5/backend/.venv/lib/python3.10/site-packages/rasa/core/actions/action.py", line 821, in run
+    raise RasaException(
+rasa.shared.exceptions.RasaException: Failed to execute custom action 'action_integration_info'. Couldn't connect to the server at 'http://localhost:5055/webhook.
+2024-11-05 18:53:38,860 - rasa.core.processor - DEBUG - Predicted next action 'action_listen' with confidence 1.00.
+2024-11-05 18:54:28,963 - rasa.core.processor - DEBUG - Logged UserUtterance - tracker now has 18 events.
+2024-11-05 18:54:28,970 - rasa.core.processor - DEBUG - Predicted next action 'action_integration_info' with confidence 1.00.
+2024-11-05 18:54:29,005 - rasa.core.processor - DEBUG - Predicted next action 'action_listen' with confidence 1.00.
