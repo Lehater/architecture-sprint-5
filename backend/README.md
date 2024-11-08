@@ -14,7 +14,24 @@
 прокомментировать ваше решение и вернёт его на доработку.
 После того как отправите ссылку, не вносите изменения в проект. Дождитесь комментариев ревьюера.
 ```
-## Логи в файле rasa_requests.log
+### Запуск
 
+terminal1 
+```bash 
+cd src
+npm install
+npm build
+npm start
+```
+terminal2
+```bash
+cd backend/src
+rasa train
+rasa run --logging-config logging.yml --cors "*"
+```
+
+### Проверка работы
 ![Скрин диалога с ассистентом](./docs/img.png)
+
+### Логи в файле [rasa_requests.log](./src/rasa_requests.log)
 

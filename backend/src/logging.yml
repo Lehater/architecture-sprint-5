@@ -32,6 +32,26 @@ loggers:
     handlers: [console, file_handler]
     propagate: false
 
+  rasa.nlu.model:
+    level: DEBUG
+    handlers: [console, file_handler]
+    propagate: false
+
+  rasa.core.nlg.generator:
+    level: DEBUG
+    handlers: [console, file_handler]
+    propagate: false
+
+  rasa.core.trackers:
+    level: DEBUG
+    handlers: [console, file_handler]
+    propagate: false
+
+  rasa.core.interpreter:
+    level: DEBUG
+    handlers: [console, file_handler]
+    propagate: false
+
 root:
   level: DEBUG
   handlers: [console, file_handler]

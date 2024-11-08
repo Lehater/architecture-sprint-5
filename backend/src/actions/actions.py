@@ -1,19 +1,20 @@
-from typing import Any, Text, Dict, List
-from rasa_sdk import Action, Tracker
-from rasa_sdk.executor import CollectingDispatcher
+import logging
 
+from rasa_sdk import Action
 
-class ActionIntegrationInfo(Action):
+logger = logging.getLogger(__name__)
 
-    def name(self) -> Text:
-        return "action_integration_info"
+class CustomAction(Action):
+    def name(self):
+        return "custom_action"
 
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        # Пример ответа ассистента с информацией о проектировании микросервисов
-        response = "Микросервисная архитектура - это стиль разработки программного обеспечения, при котором приложения состоят из небольших, независимых сервисов, которые взаимодействуют между собой."
+    def run(self, dispatcher, tracker, domain):
+        user_message = tracker.latest_message.get('text')
+        if user_message:
+            logger.info(f"User message: {user_message}")
 
-        dispatcher.utter_message(text=response)
+        response_text = "Это мой ответ."
+        dispatcher.utter_message(text=response_text)
+        logger.info(f"Bot response: {response_text}")
 
         return []
